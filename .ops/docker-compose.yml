@@ -1,0 +1,15 @@
+version: "3.9"
+services:
+  master:
+    build: ../
+    command: "/srv/aquiduct/server"
+    networks:
+      - cluster
+  worker:
+    build: ../
+    command: "/srv/aquiduct/server -host=master"
+    networks:
+      - cluster
+
+networks:
+  cluster:
